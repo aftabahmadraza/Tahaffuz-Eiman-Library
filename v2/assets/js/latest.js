@@ -1,78 +1,41 @@
-/* =======================================
-Latest Questions
-======================================= */
-
-async function loadLatestQuestions() {
+async function loadLatestQuestions(){
 
     const container = document.getElementById("latestQuestions");
 
-    if (!container) return;
+    if(!container){
+        alert("latestQuestions DIV NOT FOUND");
+        return;
+    }
 
-    try {
+    try{
+
+        alert("Fetching JSON...");
 
         const response = await fetch("database/index.json");
 
-        if (!response.ok) {
+        alert(response.status);
 
-            throw new Error("index.json not found");
+        const data = await response.json();
 
-        }
+        console.log(data);
 
-        const questions = await response.json();
+        container.innerHTML="";
 
-        container.innerHTML = "";
+        data.forEach(item=>{
 
-        questions.slice(0,6).forEach(item=>{
-
-            container.innerHTML += `
-
+            container.innerHTML+=`
             <div class="question-card">
-
-                <div class="question-id">
-
-                    ${item.id}
-
-                </div>
-
-                <h3>
-
-                    ${item.title}
-
-                </h3>
-
-                <div class="question-category">
-
-                    ${item.category}
-
-                </div>
-
-                <a href="question.html?id=${item.id}" class="view-btn">
-
-                    View Answer →
-
-                </a>
-
+                <h3>${item.title}</h3>
             </div>
-
             `;
 
         });
 
-    }
+    }catch(error){
 
-    catch(error){
+        alert(error);
 
-        console.error(error);
-
-        container.innerHTML=`
-
-        <div style="padding:40px;text-align:center;color:red;">
-
-            Latest Questions Load Failed
-
-        </div>
-
-        `;
+        console.log(error);
 
     }
 
