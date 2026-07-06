@@ -433,3 +433,37 @@ display:none;
 }
 
 }
+
+/* ===========================
+Dark Mode
+=========================== */
+
+body.dark{
+
+background:#101010;
+
+color:white;
+
+}
+
+body.dark .stat-card{
+
+background:#1f1f1f;
+
+color:white;
+
+}
+
+body.dark .trend-card{
+
+background:#1f1f1f;
+
+color:white;
+
+}
+
+body.dark nav a{
+
+color:white;
+
+}
