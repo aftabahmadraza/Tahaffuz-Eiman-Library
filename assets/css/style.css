@@ -26,7 +26,17 @@ z-index:999;
 font-size:24px;
 font-weight:700;
 }
+#latestQuestions{
 
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:25px;
+
+margin-top:30px;
+
+}
 nav a{
 color:white;
 text-decoration:none;
