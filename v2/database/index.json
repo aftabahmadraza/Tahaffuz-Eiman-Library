@@ -1,0 +1,25 @@
+[
+{
+"id":"AQ000001",
+"title":"Kya Allah Arsh Par Hai?",
+"category":"Aqeedah"
+},
+
+{
+"id":"AQ000002",
+"title":"Kya Noor Bashar Tha?",
+"category":"Aqeedah"
+},
+
+{
+"id":"AQ000003",
+"title":"Kya Tawassul Jaiz Hai?",
+"category":"Fiqh"
+},
+
+{
+"id":"AQ000004",
+"title":"Bidat Ki Haqeeqat Kya Hai?",
+"category":"Bidat"
+}
+]
