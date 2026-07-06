@@ -150,76 +150,83 @@ Statistics
 
 </section>
 
-<!-- =========================
-Trending Questions
-========================= -->
+/*=========================
+TRENDING
+=========================*/
 
-<section class="trending">
+.trending{
 
-<div class="container">
+padding:70px 20px;
 
-<h2>🔥 Trending Questions</h2>
+background:#f5f7f6;
 
-<div class="trend-grid">
+}
 
-<div class="trend-card">
-AQ000001<br>
-Kya Allah Arsh Par Hai?
-</div>
+.trending h2{
 
-<div class="trend-card">
-AQ000002<br>
-Kya Noor Bashar Tha?
-</div>
+text-align:center;
 
-<div class="trend-card">
-AQ000003<br>
-Kya Tawassul Jaiz Hai?
-</div>
+font-size:40px;
 
-<div class="trend-card">
-AQ000004<br>
-Bidat Ki Haqeeqat Kya Hai?
-</div>
+margin-bottom:40px;
 
-</div>
+color:#0f7b4d;
 
-</div>
+}
 
-</section>
+.trend-grid{
 
-  <!-- Quick Access -->
+display:grid;
 
-<section class="quick-access">
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
-<div class="container">
+gap:25px;
 
-<h2>Quick Access</h2>
+}
 
-<div class="quick-grid">
+.trend-card{
 
-<a href="#">📚 Questions</a>
+background:#fff;
 
-<a href="#">📖 Quran</a>
+padding:30px;
 
-<a href="#">📚 Hadith</a>
+border-radius:18px;
 
-<a href="#">📄 PDF</a>
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 
-<a href="#">🎥 Videos</a>
+border-left:5px solid #0f7b4d;
 
-<a href="#">🎧 Audio</a>
+font-size:22px;
 
-<a href="#">🖼 Images</a>
+font-weight:600;
 
-<a href="#">📱 Instagram</a>
+line-height:1.6;
 
-</div>
+cursor:pointer;
 
-</div>
+transition:.3s;
 
-</section>
+}
 
+.trend-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.trend-card::before{
+
+content:"🔥";
+
+display:block;
+
+font-size:35px;
+
+margin-bottom:15px;
+
+}
   <!-- ===========================
 Latest Questions
 =========================== -->
