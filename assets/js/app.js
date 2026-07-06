@@ -44,3 +44,10 @@ async function loadLatestQuestions() {
     }
 
 }
+document.getElementById("questionCount").innerHTML="125000+";
+
+document.getElementById("pdfCount").innerHTML="18400+";
+
+document.getElementById("videoCount").innerHTML="12800+";
+
+document.getElementById("audioCount").innerHTML="6400+";
