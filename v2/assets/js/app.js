@@ -68,7 +68,7 @@ async function loadLatestQuestions() {
 
     try {
 
-        const response = await fetch("../database/index.json");
+        const response = await fetch("../../database/index.json");
         const data = await response.json();
 
         container.innerHTML = "";
