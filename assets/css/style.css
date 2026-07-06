@@ -41,11 +41,6 @@ background:linear-gradient(135deg,#1565c0,#0d47a1);
 color:white;
 }
 
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
-}
-
 .hero p{
 font-size:20px;
 opacity:.9;
