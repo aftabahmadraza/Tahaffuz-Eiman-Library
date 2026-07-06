@@ -1,0 +1,9 @@
+[
+  {
+    "id": "AQ000001",
+    "title": "Sample Question",
+    "category": "Aqeedah",
+    "tags": ["sample"],
+    "file": "questions/AQ000001.json"
+  }
+]
