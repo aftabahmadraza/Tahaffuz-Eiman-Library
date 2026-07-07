@@ -323,3 +323,105 @@ line-height:1.8;
 }
 
 }
+
+/* =======================================
+BOOK REFERENCES
+======================================= */
+
+.book-section{
+
+padding:70px 0;
+
+background:#f8fbfd;
+
+}
+
+.section-desc{
+
+margin-top:-10px;
+
+margin-bottom:25px;
+
+color:#666;
+
+font-size:16px;
+
+}
+
+.table-wrapper{
+
+overflow-x:auto;
+
+}
+
+.book-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.book-table thead{
+
+background:#0f7b4d;
+
+color:#fff;
+
+}
+
+.book-table th{
+
+padding:18px;
+
+font-size:16px;
+
+}
+
+.book-table td{
+
+padding:18px;
+
+border-bottom:1px solid #eee;
+
+font-size:15px;
+
+}
+
+.book-table tr:hover{
+
+background:#f5fff9;
+
+}
+
+.book-btn{
+
+display:inline-block;
+
+padding:8px 15px;
+
+background:#0f7b4d;
+
+color:#fff;
+
+border-radius:8px;
+
+text-decoration:none;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.book-btn:hover{
+
+background:#095c38;
+
+}
