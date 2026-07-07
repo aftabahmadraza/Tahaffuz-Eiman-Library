@@ -71,3 +71,21 @@
     "AQ000004"
   ]
 }
+
+"bookReferences":[
+{
+"bookName":"Fatawa Razawiya",
+"author":"Imam Ahmad Raza Khan",
+"volume":"29",
+"page":"512",
+"line":"12-18",
+
+"scan":"assets/proofs/AQ000001/page512.jpg",
+
+"pdf":"assets/pdfs/fatawa29.pdf",
+
+"quote":"Original Arabic/Urdu Text",
+
+"translation":"Hindi Translation"
+}
+]
