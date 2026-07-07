@@ -1,91 +1,126 @@
 {
   "id": "AQ000001",
+
   "category": "Aqeedah",
+
   "title": "Kya Allah Arsh Par Hai?",
 
   "status": "Verified",
-  "lastUpdated": "2026-07-07",
 
-  "answer": "<p>Yahan poora detailed answer HTML me likha jayega.</p>",
+  "updated": "2026-07-07",
 
-  "bookReferences": [
+  "answer": "<p>Yahan Full Detailed Answer HTML me hoga.</p>",
+
+  "references":[
+
     {
-      "bookName": "Fatawa Razawiya",
-      "author": "Imam Ahmad Raza Khan",
-      "volume": "29",
-      "page": "512",
-      "line": "12-18",
-      "hadithNumber": "",
-      "publisher": "Raza Foundation",
-      "language": "Urdu"
+
+      "type":"book",
+
+      "book":"Fatawa Razawiya",
+
+      "author":"Imam Ahmad Raza Khan",
+
+      "publisher":"Raza Foundation",
+
+      "volume":"29",
+
+      "page":"512",
+
+      "line":"12-18",
+
+      "language":"Urdu"
+
     }
+
   ],
 
-  "images": [
+  "evidence":[
+
     {
-      "title": "Book Scan",
-      "image": "assets/proofs/AQ000001/book-page-512.jpg"
+
+      "type":"book_scan",
+
+      "title":"Original Book Scan",
+
+      "image":"assets/evidence/AQ000001/book512.jpg"
+
+    },
+
+    {
+
+      "type":"highlight",
+
+      "title":"Highlighted Proof",
+
+      "image":"assets/evidence/AQ000001/highlight512.jpg"
+
+    },
+
+    {
+
+      "type":"pdf",
+
+      "title":"Original PDF",
+
+      "file":"assets/evidence/AQ000001/book.pdf"
+
+    },
+
+    {
+
+      "type":"youtube",
+
+      "title":"Video Explanation",
+
+      "url":"https://youtube.com/watch?v=xxxx"
+
+    },
+
+    {
+
+      "type":"instagram",
+
+      "title":"Instagram Reel",
+
+      "url":"https://instagram.com/reel/xxxxx"
+
+    },
+
+    {
+
+      "type":"audio",
+
+      "title":"Audio Bayan",
+
+      "file":"assets/evidence/AQ000001/audio.mp3"
+
     }
+
   ],
 
-  "pdfs": [
+  "fatwas":[
+
     {
-      "title": "Original Book PDF",
-      "file": "assets/pdfs/AQ000001/fatawa-razawiya-vol29.pdf"
+
+      "mufti":"Mufti XYZ",
+
+      "organization":"Darul Ifta",
+
+      "reference":"Fatwa No. 123",
+
+      "pdf":"assets/evidence/AQ000001/fatwa.pdf"
+
     }
+
   ],
 
-  "youtube": [
-    {
-      "title": "Complete Explanation",
-      "url": "https://youtube.com/watch?v=xxxx"
-    }
-  ],
+  "related":[
 
-  "instagram": [
-    {
-      "title": "Instagram Reel",
-      "url": "https://instagram.com/xxxxx"
-    }
-  ],
-
-  "audio": [
-    {
-      "title": "Audio Bayan",
-      "file": "assets/audio/AQ000001/audio.mp3"
-    }
-  ],
-
-  "fatwas": [
-    {
-      "mufti": "Mufti Example",
-      "organization": "Example Darul Ifta",
-      "reference": "Fatwa No. 123",
-      "pdf": "assets/fatwa/AQ000001.pdf"
-    }
-  ],
-
-  "relatedQuestions": [
     "AQ000002",
-    "AQ000003",
-    "AQ000004"
+
+    "AQ000003"
+
   ]
+
 }
-
-"bookReferences":[
-{
-"bookName":"Fatawa Razawiya",
-"author":"Imam Ahmad Raza Khan",
-"volume":"29",
-"page":"512",
-"line":"12-18",
-
-"scan":"assets/proofs/AQ000001/page512.jpg",
-
-"pdf":"assets/pdfs/fatawa29.pdf",
-
-"quote":"Original Arabic/Urdu Text",
-
-"translation":"Hindi Translation"
-}
-]
