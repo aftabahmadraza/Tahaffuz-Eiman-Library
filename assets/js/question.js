@@ -210,6 +210,54 @@ function setText(id,text){
 }
 
 /* =====================================
+GALLERY
+===================================== */
+
+function renderGallery(data){
+
+    const container=document.getElementById("evidenceGallery");
+
+    if(!container) return;
+
+    container.innerHTML="";
+
+    if(!data.evidence || data.evidence.length===0){
+
+        container.innerHTML="<p>No Evidence Available.</p>";
+
+        return;
+
+    }
+
+    data.evidence.forEach(item=>{
+
+        if(item.type==="book_scan" || item.type==="highlight" || item.type==="image"){
+
+            container.innerHTML+=`
+
+<div class="gallery-card">
+
+<img src="${item.file}" alt="${item.title}">
+
+<div class="gallery-info">
+
+<h4>${item.title}</h4>
+
+<span>${item.type}</span>
+
+</div>
+
+</div>
+
+`;
+
+        }
+
+    });
+
+}
+
+/* =====================================
 ERROR
 ===================================== */
 
