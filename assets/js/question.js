@@ -44,6 +44,7 @@ async function loadQuestion() {
         renderAnswer(data);
 
         renderBooks(data);
+        
         renderGallery(data);
 
     }
