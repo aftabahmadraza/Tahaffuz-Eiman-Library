@@ -1,12 +1,17 @@
+/* =====================================
+Tahaffuz-E-Iman Library
+Question Engine V1
+===================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     loadQuestion();
 
 });
 
-/* ===============================
-   LOAD QUESTION
-================================ */
+/* =====================================
+LOAD QUESTION
+===================================== */
 
 async function loadQuestion() {
 
@@ -16,7 +21,7 @@ async function loadQuestion() {
 
     if (!id) {
 
-        alert("Question ID Missing");
+        showError("Question ID Missing");
 
         return;
 
@@ -28,7 +33,7 @@ async function loadQuestion() {
 
         if (!response.ok) {
 
-            throw new Error("Question Not Found");
+            throw new Error("Question JSON Not Found");
 
         }
 
@@ -44,55 +49,57 @@ async function loadQuestion() {
 
     catch(error){
 
-        console.log(error);
+        console.error(error);
 
-        document.body.innerHTML = `
-        <h1 style="text-align:center;margin-top:100px">
-        Question Not Found
-        </h1>
-        `;
+        showError(error.message);
 
     }
 
 }
 
-/* ===============================
-   HERO
-================================ */
+/* =====================================
+HERO
+===================================== */
 
 function renderHero(data){
 
-    document.getElementById("questionTitle").innerHTML = data.title;
+    setText("questionTitle",data.title);
 
-    document.getElementById("questionCategory").innerHTML = data.category;
+    setText("questionCategory",data.category);
 
-    document.getElementById("questionID").innerHTML = data.id;
+    setText("questionID",data.id);
 
-    document.getElementById("badgeID").innerHTML = data.id;
+    setText("badgeID",data.id);
 
-    document.getElementById("badgeCategory").innerHTML = data.category;
+    setText("badgeCategory",data.category);
 
-    document.getElementById("badgeStatus").innerHTML = data.status;
+    setText("badgeStatus",data.status);
 
 }
 
-/* ===============================
-   ANSWER
-================================ */
+/* =====================================
+ANSWER
+===================================== */
 
 function renderAnswer(data){
 
-    document.getElementById("questionAnswer").innerHTML = data.answer;
+    const answer=document.getElementById("questionAnswer");
+
+    if(answer){
+
+        answer.innerHTML=data.answer || "<p>No Answer Found.</p>";
+
+    }
 
 }
 
-/* ===============================
-   BOOKS
-================================ */
+/* =====================================
+BOOKS
+===================================== */
 
 function renderBooks(data){
 
-    const container = document.getElementById("bookReferenceCards");
+    const container=document.getElementById("bookReferenceCards");
 
     if(!container) return;
 
@@ -100,7 +107,7 @@ function renderBooks(data){
 
     if(!data.referenceBooks || data.referenceBooks.length===0){
 
-        container.innerHTML="<h3>No Book Reference Found</h3>";
+        container.innerHTML="<p>No Book References.</p>";
 
         return;
 
@@ -126,7 +133,7 @@ function renderBooks(data){
 
 <div>
 
-<b>Author</b><br>
+<strong>Author</strong><br>
 
 ${book.author}
 
@@ -134,7 +141,7 @@ ${book.author}
 
 <div>
 
-<b>Volume</b><br>
+<strong>Volume</strong><br>
 
 ${book.volume}
 
@@ -142,7 +149,7 @@ ${book.volume}
 
 <div>
 
-<b>Page</b><br>
+<strong>Page</strong><br>
 
 ${book.page}
 
@@ -150,7 +157,7 @@ ${book.page}
 
 <div>
 
-<b>Line</b><br>
+<strong>Line</strong><br>
 
 ${book.line}
 
@@ -181,5 +188,53 @@ ${book.line}
 `;
 
     });
+
+}
+
+/* =====================================
+HELPERS
+===================================== */
+
+function setText(id,text){
+
+    const el=document.getElementById(id);
+
+    if(el){
+
+        el.textContent=text;
+
+    }
+
+}
+
+/* =====================================
+ERROR
+===================================== */
+
+function showError(message){
+
+    document.body.innerHTML=`
+
+<div style="padding:80px;text-align:center;font-family:Arial">
+
+<h1>⚠️ Question Not Found</h1>
+
+<p>${message}</p>
+
+<p>
+
+Please check Question ID.
+
+</p>
+
+<a href="index.html">
+
+⬅ Back To Homepage
+
+</a>
+
+</div>
+
+`;
 
 }
