@@ -194,11 +194,15 @@ ${book.line}
 
 <div class="book-buttons">
 
-<a href="${book.scan}" target="_blank">
+<button
+class="view-scan"
+data-image="${book.scan}"
+data-title="${book.bookName}"
+>
 
 📷 View Scan
 
-</a>
+</button>
 
 <a href="${book.pdf}" target="_blank">
 
