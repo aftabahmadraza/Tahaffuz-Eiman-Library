@@ -1,0 +1,126 @@
+{
+  "id": "AQ000001",
+
+  "category": "Aqeedah",
+
+  "title": "Kya Allah Arsh Par Hai?",
+
+  "status": "Verified",
+
+  "updated": "2026-07-07",
+
+  "answer": "<p>Yahan Full Detailed Answer HTML me hoga.</p>",
+
+  "references":[
+
+    {
+
+      "type":"book",
+
+      "book":"Fatawa Razawiya",
+
+      "author":"Imam Ahmad Raza Khan",
+
+      "publisher":"Raza Foundation",
+
+      "volume":"29",
+
+      "page":"512",
+
+      "line":"12-18",
+
+      "language":"Urdu"
+
+    }
+
+  ],
+
+  "evidence":[
+
+    {
+
+      "type":"book_scan",
+
+      "title":"Original Book Scan",
+
+      "image":"assets/evidence/AQ000001/book512.jpg"
+
+    },
+
+    {
+
+      "type":"highlight",
+
+      "title":"Highlighted Proof",
+
+      "image":"assets/evidence/AQ000001/highlight512.jpg"
+
+    },
+
+    {
+
+      "type":"pdf",
+
+      "title":"Original PDF",
+
+      "file":"assets/evidence/AQ000001/book.pdf"
+
+    },
+
+    {
+
+      "type":"youtube",
+
+      "title":"Video Explanation",
+
+      "url":"https://youtube.com/watch?v=xxxx"
+
+    },
+
+    {
+
+      "type":"instagram",
+
+      "title":"Instagram Reel",
+
+      "url":"https://instagram.com/reel/xxxxx"
+
+    },
+
+    {
+
+      "type":"audio",
+
+      "title":"Audio Bayan",
+
+      "file":"assets/evidence/AQ000001/audio.mp3"
+
+    }
+
+  ],
+
+  "fatwas":[
+
+    {
+
+      "mufti":"Mufti XYZ",
+
+      "organization":"Darul Ifta",
+
+      "reference":"Fatwa No. 123",
+
+      "pdf":"assets/evidence/AQ000001/fatwa.pdf"
+
+    }
+
+  ],
+
+  "related":[
+
+    "AQ000002",
+
+    "AQ000003"
+
+  ]
+
+}
