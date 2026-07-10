@@ -797,3 +797,37 @@ flex:1;
 }
 
 }
+
+/* =====================================
+ANSWER TOOLS
+===================================== */
+
+document.addEventListener("click",(e)=>{
+
+if(e.target.id==="copyAnswer"){
+
+navigator.clipboard.writeText(
+
+document.getElementById("questionAnswer").innerText
+
+);
+
+alert("Answer Copied");
+
+}
+
+if(e.target.id==="printAnswer"){
+
+window.print();
+
+}
+
+if(e.target.id==="shareAnswer"){
+
+navigator.clipboard.writeText(location.href);
+
+alert("Question Link Copied");
+
+}
+
+});
