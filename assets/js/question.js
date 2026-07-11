@@ -115,98 +115,42 @@ function renderBooks(data){
 
     data.references.forEach(book=>{
 
-        container.innerHTML+=`
-
+       container.innerHTML += `
 <div class="book-card">
 
-<div class="book-cover">
+    <img
+        src="${book.scan}"
+        alt="${book.book}"
+        class="book-image"
+        loading="lazy"
+    >
 
-📖
+    <div class="book-content">
 
-</div>
+        <h3>${book.book}</h3>
 
-<div class="book-info">
+        <p><strong>Author:</strong> ${book.author}</p>
 
-<h3>${book.bookName}</h3>
+        <p><strong>Volume:</strong> ${book.volume}</p>
 
-<div class="book-meta">
+        <p><strong>Page:</strong> ${book.page}</p>
 
-<div>
+        <p><strong>Lines:</strong> ${book.line}</p>
 
-<b>Author</b>
+        <p><strong>Language:</strong> ${book.language}</p>
 
-<br>
+        <a
+            href="${book.pdf}"
+            target="_blank"
+            class="btn-primary"
+        >
+            Open PDF
+        </a>
 
-${book.author}
-
-</div>
-
-<div>
-
-<b>Volume</b>
-
-<br>
-
-${book.volume}
-
-</div>
-
-<div>
-
-<b>Page</b>
-
-<br>
-
-${book.page}
+    </div>
 
 </div>
-
-<div>
-
-<b>Line</b>
-
-<br>
-
-${book.line}
-
-</div>
-
-</div>
-
-<div class="book-buttons">
-
-<button
-class="view-scan"
-data-image="${book.scan}"
-data-title="${book.bookName}"
->
-
-📷 View Scan
-
-</button>
-
-<a href="${book.pdf}" target="_blank">
-
-📄 Open PDF
-
-</a>
-
-<button class="copy-reference"
-
-data-reference="${book.bookName}, Vol. ${book.volume}, Page ${book.page}, Line ${book.line}">
-
-📋 Copy Citation
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
 `;
-
     });
 
 }
