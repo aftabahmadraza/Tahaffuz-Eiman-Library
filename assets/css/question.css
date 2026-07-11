@@ -1053,3 +1053,66 @@ flex:1;
 }
 
 }
+
+/*=====================================
+ANSWER CONTENT
+=====================================*/
+
+.answer-content{
+    font-size:18px;
+    line-height:1.9;
+    color:#333;
+}
+
+.answer-content h2,
+.answer-content h3,
+.answer-content h4{
+    margin:35px 0 15px;
+    color:#0f7b4d;
+    font-weight:700;
+}
+
+.answer-content p{
+    margin:18px 0;
+}
+
+.answer-content ul,
+.answer-content ol{
+    margin:18px 0 18px 30px;
+}
+
+.answer-content li{
+    margin:8px 0;
+}
+
+.answer-content img{
+    max-width:100%;
+    border-radius:14px;
+    margin:20px auto;
+    display:block;
+}
+
+.answer-content blockquote{
+    background:#f4fff9;
+    border-left:5px solid #0f7b4d;
+    padding:18px;
+    margin:25px 0;
+    border-radius:8px;
+}
+
+.answer-content table{
+    width:100%;
+    border-collapse:collapse;
+    margin:25px 0;
+}
+
+.answer-content table th,
+.answer-content table td{
+    border:1px solid #ddd;
+    padding:12px;
+}
+
+.answer-content table th{
+    background:#0f7b4d;
+    color:#fff;
+}
