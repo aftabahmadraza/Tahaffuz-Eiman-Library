@@ -1,7 +1,7 @@
 /* =====================================
 Tahaffuz-E-Iman Library
 Question Detail Page Engine V2.0
-Complete Implementation with All Features
+Complete Implementation with All Features - FIXED
 ===================================== */
 
 console.log("📖 Question Engine Loaded");
@@ -23,22 +23,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const questionId = params.get("id") || "AQ000001";
   
+  console.log("📍 Loading question:", questionId);
+  
   try {
     // Load all questions first for navigation
     const indexResponse = await fetch("database/index.json");
+    if (!indexResponse.ok) {
+      throw new Error(`Failed to load index.json: ${indexResponse.status}`);
+    }
     allQuestions = await indexResponse.json();
+    console.log("✅ Index loaded:", allQuestions.length, "questions");
+    
     currentQuestionIndex = allQuestions.findIndex(q => q.id === questionId);
+    console.log("📌 Question index:", currentQuestionIndex);
     
-    // Load specific question data
-    const qFile = `database/questions/${questionId}.json`;
-    const qResponse = await fetch(qFile);
-    
-    if (!qResponse.ok) {
-      throw new Error(`Question ${questionId} not found`);
+    if (currentQuestionIndex === -1) {
+      throw new Error(`Question ${questionId} not found in index`);
     }
     
-    const questionArray = await qResponse.json();
-    currentQuestion = questionArray[0];
+    // Get question from index (no need to fetch separately)
+    currentQuestion = allQuestions[currentQuestionIndex];
+    console.log("✅ Question loaded:", currentQuestion.id, currentQuestion.title);
     
     // Populate all sections
     populateQuestionHero();
@@ -59,8 +64,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     }
     
+    console.log("✨ Question page fully loaded");
+    
   } catch (error) {
     console.error("❌ Question load error:", error);
+    console.error("Error details:", error.message);
     handleError(error);
   }
 });
@@ -73,12 +81,12 @@ function populateQuestionHero() {
 
   document.getElementById("badgeID").textContent = currentQuestion.id;
   document.getElementById("badgeCategory").textContent = currentQuestion.category;
-  document.getElementById("badgeStatus").textContent = "✔ " + currentQuestion.status;
+  document.getElementById("badgeStatus").textContent = "✔ " + (currentQuestion.status || "Verified");
   document.getElementById("questionTitle").textContent = currentQuestion.title;
   document.getElementById("questionCategory").textContent = currentQuestion.category;
   document.getElementById("questionID").textContent = currentQuestion.id;
   
-  console.log(`📝 Question loaded: ${currentQuestion.id}`);
+  console.log(`📝 Question hero populated: ${currentQuestion.id}`);
 }
 
 /* =====================================
@@ -421,14 +429,14 @@ function initializeEvidenceViewer() {
   
   // Keyboard navigation
   document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "flex") {
+    if (modal && modal.style.display === "flex") {
       if (e.key === "Escape") {
         modal.style.display = "none";
         document.body.style.overflow = "auto";
       } else if (e.key === "+") {
-        zoomInBtn.click();
+        zoomInBtn?.click();
       } else if (e.key === "-") {
-        zoomOutBtn.click();
+        zoomOutBtn?.click();
       }
     }
   });
@@ -543,8 +551,8 @@ function handleError(error) {
     answerEl.innerHTML = `
       <div style="padding: 30px; background: #ffebee; border-radius: 12px; color: #c62828; border-left: 4px solid #f44336;">
         <p style="margin: 0; font-size: 16px;"><strong>Error Loading Question</strong></p>
-        <p style="margin: 10px 0 0; font-size: 14px;">The question you're looking for doesn't exist or could not be loaded.</p>
-        <a href="index.html" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #f44336; color: white; border-radius: 6px; text-decoration: none;">← Back to Home</a>
+        <p style="margin: 10px 0 0; font-size: 14px;">${error.message}</p>
+        <a href="index.html" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #f44336; color: white; border-radius: 6px; text-decoration: none; font-weight: 600;">← Back to Home</a>
       </div>
     `;
   }
