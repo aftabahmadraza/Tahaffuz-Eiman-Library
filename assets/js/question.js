@@ -1,169 +1,115 @@
-/* ==========================================
-   QUESTION PAGE
-   Tahaffuz-E-Iman Library
-   Version 1.1 (Optimized)
-========================================== */
+// assets/js/question.js - NEEDS TO BE CREATED
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadQuestion();
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const questionId = params.get("id") || "AQ000001";
+  
+  try {
+    // Fetch question data
+    const response = await fetch(`database/questions/${questionId}.json`);
+    const [questionData] = await response.json();
+    
+    // Populate question hero
+    document.getElementById("badgeID").textContent = questionData.id;
+    document.getElementById("badgeCategory").textContent = questionData.category;
+    document.getElementById("questionTitle").textContent = questionData.title;
+    document.getElementById("questionCategory").textContent = questionData.category;
+    
+    // Populate answer
+    document.getElementById("questionAnswer").innerHTML = questionData.answer;
+    
+    // Load book references
+    if (questionData.references?.length) {
+      loadBookReferences(questionData.references);
+    }
+    
+    // Load evidence gallery
+    if (questionData.evidence?.length) {
+      loadEvidenceGallery(questionData.evidence);
+    }
+    
+    // Load related questions
+    if (questionData.related?.length) {
+      loadRelatedQuestions(questionData.related);
+    }
+  } catch (error) {
+    console.error("Question load error:", error);
+    document.getElementById("questionTitle").textContent = "❌ Question Not Found";
+  }
 });
 
-async function loadQuestion() {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-
-    if (!id) return showError("Question ID Missing.");
-
-    const response = await fetch(`database/questions/${id}.json`);
-    if (!response.ok) return showError("Question Not Found.");
-
-    const data = await response.json();
-
-    document.title = `${data.title} | Tahaffuz-Eiman Library`;
-
-    renderHero(data);
-    renderAnswer(data);
-    renderBooks(data);
-    renderGallery(data); // अब Enabled
-  } catch (err) {
-    console.error(err);
-    showError("Unable to load question.");
-  }
-}
-
-/* ==========================================
-   HERO
-========================================== */
-function renderHero(data) {
-  setText("questionTitle", data.title);
-  setText("questionCategory", data.category);
-  setText("questionID", data.id);
-  setText("badgeID", data.id);
-  setText("badgeCategory", data.category);
-  setText("badgeStatus", data.status || "Published");
-}
-
-/* ==========================================
-   ANSWER
-========================================== */
-function renderAnswer(data) {
-  const container = document.getElementById("questionAnswer");
-  if (!container) return;
-  container.innerHTML = data.answer || "<p>Answer Not Available.</p>";
-}
-
-/* ==========================================
-   BOOK REFERENCES
-========================================== */
-function renderBooks(data) {
+async function loadBookReferences(references) {
   const container = document.getElementById("bookReferenceCards");
-  if (!container) return;
-
-  if (!data.references || data.references.length === 0) {
-    container.innerHTML = "<p>No Book References Found.</p>";
-    return;
-  }
-
-  const fragment = document.createDocumentFragment();
-
-  data.references.forEach(book => {
+  container.innerHTML = "";
+  
+  references.forEach(ref => {
     const card = document.createElement("div");
     card.className = "book-card";
     card.innerHTML = `
-      <img src="${book.scan || ''}" alt="${book.book}" class="book-image" loading="lazy">
-      <div class="book-content">
-        <h3>${book.book}</h3>
-        <p><strong>Author:</strong> ${book.author}</p>
-        <p><strong>Publisher:</strong> ${book.publisher}</p>
-        <p><strong>Volume:</strong> ${book.volume}</p>
-        <p><strong>Page:</strong> ${book.page}</p>
-        <p><strong>Line:</strong> ${book.line}</p>
-        <p><strong>Language:</strong> ${book.language}</p>
-        ${book.pdf ? `<a href="${book.pdf}" target="_blank" class="btn-primary">📄 Open PDF</a>` : ""}
+      <div>
+        <h4>${ref.book}</h4>
+        <p>Author: ${ref.author}</p>
+        <p>Page: ${ref.page}, Line: ${ref.line}</p>
+        <div style="display:flex; gap:10px; margin-top:10px;">
+          ${ref.scan ? `<a href="${ref.scan}" target="_blank" class="view-btn" style="padding:8px 14px;">📸 Scan</a>` : ''}
+          ${ref.pdf ? `<a href="${ref.pdf}" target="_blank" class="view-btn" style="padding:8px 14px;">📄 PDF</a>` : ''}
+        </div>
       </div>
     `;
-    fragment.appendChild(card);
+    container.appendChild(card);
   });
-
-  container.appendChild(fragment);
 }
 
-function setText(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = value || "";
-}
-
-/* ==========================================
-   GALLERY
-========================================== */
-function renderGallery(data) {
+async function loadEvidenceGallery(evidence) {
   const container = document.getElementById("evidenceGallery");
-  if (!container) return;
-
-  if (!data.references || data.references.length === 0) {
-    container.innerHTML = "<p>No Evidence Available.</p>";
-    return;
-  }
-
-  const fragment = document.createDocumentFragment();
-
-  data.references.forEach(item => {
-    if (item.scan) {
-      fragment.appendChild(createGalleryCard(item.scan, "Book Scan"));
+  container.innerHTML = "";
+  
+  evidence.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "gallery-card";
+    
+    if (item.type.includes("scan") || item.type === "highlight") {
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" onclick="openEvidenceViewer('${item.image}', '${item.title}')">
+      `;
+    } else if (item.type === "pdf") {
+      card.innerHTML = `<div style="padding:20px; text-align:center;">📄 ${item.title}<br><a href="${item.file}" target="_blank">Open PDF</a></div>`;
     }
-    if (item.highlight) {
-      fragment.appendChild(createGalleryCard(item.highlight, "Highlighted Evidence"));
-    }
+    container.appendChild(card);
   });
-
-  container.appendChild(fragment);
 }
 
-function createGalleryCard(src, title) {
-  const card = document.createElement("div");
-  card.className = "gallery-card";
-  card.innerHTML = `
-    <img src="${src}" alt="${title}" loading="lazy" onclick="openImage('${src}')">
-    <div class="gallery-info"><h4>${title}</h4></div>
-  `;
-  return card;
-}
-
-/* ==========================================
-   IMAGE VIEWER
-========================================== */
-function openImage(src) {
-  const modal = document.getElementById("imageViewer");
-  if (!modal) return;
-  modal.style.display = "flex";
-  document.getElementById("viewerImage").src = src;
-}
-
-function closeImage() {
-  const modal = document.getElementById("imageViewer");
-  if (modal) modal.style.display = "none";
-}
-
-/* ==========================================
-   PDF VIEWER
-========================================== */
-function openPDF(url) {
-  window.open(url, "_blank");
-}
-
-/* ==========================================
-   ERROR
-========================================== */
-function showError(message) {
-  setText("questionTitle", "Error");
-  const answer = document.getElementById("questionAnswer");
-  if (answer) {
-    answer.innerHTML = `
-      <div class="error-box">
-        <h2>⚠ Error</h2>
-        <p>${message}</p>
-      </div>
-    `;
+async function loadRelatedQuestions(relatedIds) {
+  const container = document.getElementById("relatedQuestions");
+  container.innerHTML = "";
+  
+  try {
+    const indexResponse = await fetch("database/index.json");
+    const allQuestions = await indexResponse.json();
+    
+    relatedIds.forEach(id => {
+      const q = allQuestions.find(x => x.id === id);
+      if (q) {
+        container.innerHTML += `
+          <a href="question.html?id=${q.id}" class="related-card">
+            <h3>${q.title}</h3>
+            <span>${q.id} • ${q.category}</span>
+          </a>
+        `;
+      }
+    });
+  } catch (error) {
+    console.error("Related questions load error:", error);
   }
 }
+
+function openEvidenceViewer(src, title) {
+  const modal = document.getElementById("evidenceModal");
+  document.getElementById("viewerImage").src = src;
+  document.getElementById("viewerTitle").textContent = title;
+  modal.style.display = "flex";
+}
+
+document.getElementById("closeViewer")?.addEventListener("click", () => {
+  document.getElementById("evidenceModal").style.display = "none";
+});
