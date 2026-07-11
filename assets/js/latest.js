@@ -1,6 +1,6 @@
 /* =====================================
 Tahaffuz-E-Iman Library
-Latest Questions Module V2.0
+Latest Questions Module V2.0 - FIXED
 Dynamic Question Loading & Display
 ===================================== */
 
@@ -19,6 +19,7 @@ const LatestQuestionsState = {
 LOAD LATEST QUESTIONS ON PAGE LOAD
 ===================================== */
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("📖 Starting to load latest questions...");
   loadLatestQuestions();
   initializePagination();
 });
@@ -28,7 +29,10 @@ MAIN FUNCTION - LOAD LATEST QUESTIONS
 ===================================== */
 async function loadLatestQuestions() {
   const container = document.getElementById("latestQuestions");
-  if (!container) return;
+  if (!container) {
+    console.warn("⚠️ latestQuestions container not found");
+    return;
+  }
 
   try {
     // Show loading state
@@ -38,27 +42,34 @@ async function loadLatestQuestions() {
       </div>
     `;
 
+    console.log("📡 Fetching database/index.json...");
+    
     // Fetch questions
     const response = await fetch("database/index.json");
+    console.log("📊 Response status:", response.status);
+    
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log("✅ Data loaded successfully:", data.length, "questions");
     
     // Store data
     LatestQuestionsState.allQuestions = data;
     LatestQuestionsState.totalQuestions = data.length;
 
-    // Sort by ID to show latest (or by custom date if available)
-    const sorted = [...data].sort((a, b) => {
-      // If dates are available, use them
-      if (a.updated && b.updated) {
-        return new Date(b.updated) - new Date(a.updated);
-      }
-      // Otherwise sort by ID descending (latest IDs first)
-      return b.id.localeCompare(a.id);
-    });
+    if (data.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: #999;">
+          <p style="font-size: 18px; margin: 0;">📚 No questions available</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Sort by ID to show latest (reverse order)
+    const sorted = [...data].reverse();
 
     // Display first batch
     displayQuestions(sorted.slice(0, LatestQuestionsState.itemsPerPage));
@@ -72,12 +83,20 @@ async function loadLatestQuestions() {
 
   } catch (error) {
     console.error("❌ Error loading latest questions:", error);
-    container.innerHTML = `
-      <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: #f44336;">
-        <p style="font-size: 18px; margin: 0;">❌ Failed to load latest questions</p>
-        <p style="font-size: 14px; margin: 10px 0 0; color: #999;">Please try refreshing the page</p>
-      </div>
-    `;
+    console.error("Error details:", error.message);
+    
+    const container = document.getElementById("latestQuestions");
+    if (container) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: #f44336;">
+          <p style="font-size: 18px; margin: 0; font-weight: 600;">❌ Failed to load latest questions</p>
+          <p style="font-size: 14px; margin: 10px 0 0; color: #999;">Error: ${error.message}</p>
+          <button onclick="location.reload()" style="margin-top: 15px; padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            🔄 Retry Loading
+          </button>
+        </div>
+      `;
+    }
   }
 }
 
@@ -88,6 +107,8 @@ function displayQuestions(questions) {
   const container = document.getElementById("latestQuestions");
   if (!container) return;
 
+  console.log("🎨 Displaying", questions.length, "questions");
+
   // Clear container
   container.innerHTML = "";
 
@@ -95,7 +116,7 @@ function displayQuestions(questions) {
   if (questions.length === 0) {
     container.innerHTML = `
       <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: #999;">
-        <p style="font-size: 18px; margin: 0;">📚 No questions available yet</p>
+        <p style="font-size: 18px; margin: 0;">📚 No questions available</p>
       </div>
     `;
     return;
@@ -114,6 +135,9 @@ function displayQuestions(questions) {
     // Get category color
     const categoryColor = getCategoryColor(question.category);
 
+    const description = question.description || "Authentic answer with references";
+    const title = question.title || "Untitled Question";
+
     card.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
         <div class="question-id">${question.id}</div>
@@ -121,9 +145,9 @@ function displayQuestions(questions) {
           ${question.category}
         </span>
       </div>
-      <h3 style="margin: 0 0 12px; line-height: 1.4; color: #1f2937;">${escapeHtml(question.title)}</h3>
+      <h3 style="margin: 0 0 12px; line-height: 1.4; color: #1f2937;">${escapeHtml(title)}</h3>
       <p style="margin: 0 0 15px; color: #666; font-size: 14px; min-height: 40px;">
-        ${question.description ? escapeHtml(question.description) : 'Authentic answer with references'}
+        ${escapeHtml(description)}
       </p>
       <div style="display: flex; gap: 10px; align-items: center;">
         <a href="question.html?id=${question.id}" class="view-btn" style="flex: 1; text-align: center;">
@@ -143,8 +167,9 @@ function displayQuestions(questions) {
   container.appendChild(fragment);
 
   // Add animation keyframes if not exists
-  if (!document.querySelector("style:contains('fadeIn-animation')")) {
+  if (!document.querySelector("style[data-animation='fadeIn']")) {
     const style = document.createElement("style");
+    style.setAttribute("data-animation", "fadeIn");
     style.textContent = `
       @keyframes fadeIn {
         from {
@@ -159,6 +184,8 @@ function displayQuestions(questions) {
     `;
     document.head.appendChild(style);
   }
+
+  console.log("✅ Questions displayed successfully");
 }
 
 /* =====================================
@@ -300,8 +327,7 @@ function searchLatestQuestions(query) {
   const lowerQuery = query.toLowerCase();
   const filtered = LatestQuestionsState.allQuestions.filter(q =>
     q.id.toLowerCase().includes(lowerQuery) ||
-    q.title.toLowerCase().includes(lowerQuery) ||
-    q.description?.toLowerCase().includes(lowerQuery)
+    q.title.toLowerCase().includes(lowerQuery)
   );
 
   displayQuestions(filtered.slice(0, LatestQuestionsState.itemsPerPage));
@@ -367,7 +393,7 @@ function escapeHtml(text) {
 SHARE QUESTION
 ===================================== */
 function shareQuestion(questionId, title) {
-  const url = `${window.location.origin}/question.html?id=${questionId}`;
+  const url = `${window.location.origin}/Tahaffuz-E-Iman-Library/question.html?id=${questionId}`;
   const text = `Check out this question: ${title}`;
 
   if (navigator.share) {
