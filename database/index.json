@@ -1,53 +1,28 @@
 [
-  {
-    "id": "AQ000001",
-    "title": "Kya Allah Arsh Par Hai?",
-    "category": "Aqeedah"
-  },
-  {
-    "id": "AQ000002",
-    "title": "Kya Noor Bashar Tha?",
-    "category": "Aqeedah"
-  },
-  {
-    "id": "AQ000003",
-    "title": "Kya Tawassul Jaiz Hai?",
-    "category": "Fiqh"
-  },
-  {
-    "id": "AQ000004",
-    "title": "Bidat Ki Haqeeqat Kya Hai?",
-    "category": "Bidah"
-  },
-  {
-    "id": "AQ000005",
-    "title": "Kya Mawlid Manana Jaiz Hai?",
-    "category": "Fiqh"
-  },
-  {
-    "id": "AQ000006",
-    "title": "Kya Quran Sharif Ko Chhune Ke Liye Wuzu Zaroori Hai?",
-    "category": "Fiqh"
-  },
-  {
-    "id": "AQ000007",
-    "title": "Kya Tasbeeh Par Namaz Padhna Jaiz Hai?",
-    "category": "Fiqh"
-  },
-  {
-    "id": "AQ000008",
-    "title": "Kya Imam Mehdi Ki Aamad Qareeb Hai?",
-    "category": "Aqeedah"
-  },
-  {
-    "id": "AQ000009",
-    "title": "Kya Tasawwuf Islam Mein Hai?",
-    "category": "Tasawwuf"
-  },
-  {
-    "id": "AQ000010",
-    "title": "Kya Aurat Ko Masjid Mein Namaz Padhna Jaiz Hai?",
-    "category": "Fiqh"
-  }
-  // इसी तरह AQ000011 से AQ000026 तक placeholders जोड़ें
+  { "id": "AQ000001", "title": "Kya Allah Arsh Par Hai?", "category": "Aqeedah" },
+  { "id": "AQ000002", "title": "Kya Noor Bashar Tha?", "category": "Aqeedah" },
+  { "id": "AQ000003", "title": "Kya Tawassul Jaiz Hai?", "category": "Fiqh" },
+  { "id": "AQ000004", "title": "Bidat Ki Haqeeqat Kya Hai?", "category": "Bidah" },
+  { "id": "AQ000005", "title": "Kya Mawlid Manana Jaiz Hai?", "category": "Fiqh" },
+  { "id": "AQ000006", "title": "Kya Quran Ko Chhune Ke Liye Wuzu Zaroori Hai?", "category": "Fiqh" },
+  { "id": "AQ000007", "title": "Kya Tasbeeh Par Namaz Padhna Jaiz Hai?", "category": "Fiqh" },
+  { "id": "AQ000008", "title": "Kya Imam Mehdi Ki Aamad Qareeb Hai?", "category": "Aqeedah" },
+  { "id": "AQ000009", "title": "Kya Tasawwuf Islam Mein Hai?", "category": "Tasawwuf" },
+  { "id": "AQ000010", "title": "Kya Aurat Ko Masjid Mein Namaz Jaiz Hai?", "category": "Fiqh" },
+  { "id": "AQ000011", "title": "Kya Qawwali Sunnah Hai?", "category": "Tasawwuf" },
+  { "id": "AQ000012", "title": "Kya Zikr Bil Jahar Jaiz Hai?", "category": "Tasawwuf" },
+  { "id": "AQ000013", "title": "Kya Namaz Mein Surah Fatiha Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000014", "title": "Kya Aurat Ko Hijab Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000015", "title": "Kya Roza Toot Jata Hai Agar Injection Lagaye?", "category": "Fiqh" },
+  { "id": "AQ000016", "title": "Kya Zakat Har Musalman Par Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000017", "title": "Kya Quran Mein Har Cheez Ka Bayan Hai?", "category": "Aqeedah" },
+  { "id": "AQ000018", "title": "Kya Namaz Qaza Karna Gunah Hai?", "category": "Fiqh" },
+  { "id": "AQ000019", "title": "Kya Aurat Ko Talaq Dene Ka Haq Hai?", "category": "Fiqh" },
+  { "id": "AQ000020", "title": "Kya Imam Abu Hanifa Ki Taqleed Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000021", "title": "Kya Quran Ko Translation Ke Saath Padhna Jaiz Hai?", "category": "Fiqh" },
+  { "id": "AQ000022", "title": "Kya Namaz Mein Dua Qunoot Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000023", "title": "Kya Aurat Ko Jummah Namaz Farz Hai?", "category": "Fiqh" },
+  { "id": "AQ000024", "title": "Kya Tasbeeh Se Zikr Karna Bidat Hai?", "category": "Bidah" },
+  { "id": "AQ000025", "title": "Kya Quran Mein Allah Ko Dekhna Mumkin Hai?", "category": "Aqeedah" },
+  { "id": "AQ000026", "title": "Kya Aurat Ko Eidgah Jana Jaiz Hai?", "category": "Fiqh" }
 ]
