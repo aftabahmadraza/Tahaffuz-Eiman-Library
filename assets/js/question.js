@@ -79,38 +79,19 @@ function renderHero(data){
 
 }
 
-<!-- ==========================================
-ANSWER SECTION
-========================================== -->
+/* =====================================
+ANSWER
+===================================== */
 
-<section class="answer-section" id="answerSection">
+function renderAnswer(data){
 
-<div class="container">
+    const container = document.getElementById("questionAnswer");
 
-<div class="section-card">
+    if(!container) return;
 
-<div class="section-title">
+    container.innerHTML = data.answer || "<p>Answer Not Available.</p>";
 
-📝 Detailed Answer
-
-</div>
-
-<div id="questionAnswer" class="answer-content">
-
-<p>
-
-Loading answer...
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+}
 
 /* =====================================
 BOOKS
