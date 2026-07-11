@@ -105,7 +105,7 @@ function renderBooks(data){
 
     container.innerHTML="";
 
-    if(!data.referenceBooks || data.referenceBooks.length===0){
+    if(!data.references || data.references.length===0){
 
         container.innerHTML="<p>No Book Reference Found.</p>";
 
@@ -113,7 +113,7 @@ function renderBooks(data){
 
     }
 
-    data.referenceBooks.forEach(book=>{
+    data.references.forEach(book=>{
 
         container.innerHTML+=`
 
