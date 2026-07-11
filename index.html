@@ -3,65 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tahaffuz-E-Iman Library</title>
-  <meta name="description" content="World's Largest Islamic Question Answer & Evidence Library">
+  <title>Tahaffuz-E-Iman Library - Islamic Q&A Evidence Research</title>
+  <meta name="description" content="World's Largest Islamic Evidence Research Library. Questions answered with Quran, Hadith, Books, PDFs, Videos & Audio">
+  <meta name="keywords" content="Islam, Quran, Hadith, Islamic Questions, Fatwa, Islamic Library">
+  <meta property="og:title" content="Tahaffuz-E-Iman Library">
+  <meta property="og:description" content="Digital Islamic Evidence Research Library">
+  <meta property="og:image" content="https://tahaffuziman.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://aftabahmadraza.github.io/Tahaffuz-E-Iman-Library/">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- ============ HEADER ============ -->
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">🕌 Tahaffuz-E-Iman</a>
     <nav class="desktop-nav">
-      <a href="#">Home</a><a href="#">Questions</a><a href="#">Books</a><a href="#">Fatwa</a><a href="#">About</a>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="search.html">Search</a>
+      <a href="about.html">About</a>
     </nav>
-    <button id="theme-toggle" class="icon-btn">🌙</button>
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
   </div>
 </header>
 
+<!-- ============ HERO SECTION ============ -->
 <section class="hero">
   <div class="container">
-    <h1>World's Largest Islamic Evidence Library</h1>
-    <p>Questions • Quran • Hadith • Books • PDF • Video</p>
-    <div class="search-box">
-      <input id="searchInput" type="text" placeholder="Search..." autocomplete="off">
-      <button id="searchBtn">🔍</button>
+    <h1>🕌 World's Largest Islamic Evidence Library</h1>
+    <p class="hero-subtitle">Authentic Answers with Quran • Hadith • Books • PDF • Video • Audio</p>
+    
+    <!-- Search Box -->
+    <div class="hero-search">
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search questions..." autocomplete="off" aria-label="Search">
+        <button id="searchBtn" aria-label="Search Button">🔍</button>
+      </div>
+      <div id="searchSuggestions" class="suggestions"></div>
     </div>
-    <div id="searchSuggestions" class="suggestions"></div>
+    
+    <!-- Quick Action Buttons -->
+    <div class="heroButtons">
+      <a href="categories.html" class="hero-btn">📂 Browse Categories</a>
+      <a href="search.html" class="hero-btn">🔍 Advanced Search</a>
+      <a href="about.html" class="hero-btn">ℹ️ About Library</a>
+    </div>
   </div>
 </section>
 
+<!-- ============ STATISTICS ============ -->
 <section class="stats container">
-  <div class="stat-card"><h2>125000+</h2><p>Questions</p></div>
-  <div class="stat-card"><h2>18400+</h2><p>PDF Evidence</p></div>
-  <div class="stat-card"><h2>12800+</h2><p>Videos</p></div>
-  <div class="stat-card"><h2>6400+</h2><p>Audio</p></div>
-</section>
-
-<section class="trending container">
-  <h2>🔥 Trending</h2>
-  <div class="trend-grid">
-    <div class="trend-card">AQ000001<br>Kya Allah Arsh Par Hai?</div>
-    <div class="trend-card">AQ000002<br>Kya Noor Bashar Tha?</div>
-    <div class="trend-card">AQ000003<br>Kya Tawassul Jaiz Hai?</div>
-    <div class="trend-card">AQ000004<br>Bidat Ki Haqeeqat Kya Hai?</div>
+  <div class="stat-card">
+    <h2>125000+</h2>
+    <p>Questions Answered</p>
+  </div>
+  <div class="stat-card">
+    <h2>18400+</h2>
+    <p>PDF Evidence</p>
+  </div>
+  <div class="stat-card">
+    <h2>12800+</h2>
+    <p>Videos</p>
+  </div>
+  <div class="stat-card">
+    <h2>6400+</h2>
+    <p>Audio Files</p>
   </div>
 </section>
 
+<!-- ============ QUICK ACCESS ============ -->
+<section class="quick-access container">
+  <h2>⚡ Quick Access</h2>
+  <div class="quick-grid">
+    <a href="search.html?category=Aqeedah" class="quick-card" style="text-decoration:none;color:inherit;">
+      <div class="icon">🕌</div>
+      <h3>Aqeedah</h3>
+      <p>Islamic Belief System</p>
+    </a>
+    <a href="search.html?category=Fiqh" class="quick-card" style="text-decoration:none;color:inherit;">
+      <div class="icon">📖</div>
+      <h3>Fiqh</h3>
+      <p>Islamic Jurisprudence</p>
+    </a>
+    <a href="search.html?category=Tasawwuf" class="quick-card" style="text-decoration:none;color:inherit;">
+      <div class="icon">🤝</div>
+      <h3>Tasawwuf</h3>
+      <p>Spiritual Path</p>
+    </a>
+    <a href="search.html?category=Bidah" class="quick-card" style="text-decoration:none;color:inherit;">
+      <div class="icon">⚠️</div>
+      <h3>Bidah</h3>
+      <p>Innovations</p>
+    </a>
+  </div>
+</section>
+
+<!-- ============ TRENDING QUESTIONS ============ -->
+<section class="trending container">
+  <h2>🔥 Trending Questions</h2>
+  <div class="trend-grid">
+    <a href="question.html?id=AQ000001" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000001</b><br>
+      Kya Allah Arsh Par Hai?
+    </a>
+    <a href="question.html?id=AQ000002" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000002</b><br>
+      Kya Noor Bashar Tha?
+    </a>
+    <a href="question.html?id=AQ000003" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000003</b><br>
+      Kya Tawassul Jaiz Hai?
+    </a>
+    <a href="question.html?id=AQ000004" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000004</b><br>
+      Bidat Ki Haqeeqat Kya Hai?
+    </a>
+    <a href="question.html?id=AQ000008" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000008</b><br>
+      Kya Imam Mehdi Ki Aamad Qareeb Hai?
+    </a>
+    <a href="question.html?id=AQ000014" class="trend-card" style="text-decoration:none;color:inherit;">
+      <b>AQ000014</b><br>
+      Kya Aurat Ko Hijab Farz Hai?
+    </a>
+  </div>
+</section>
+
+<!-- ============ LATEST QUESTIONS ============ -->
 <section class="latest container">
   <h2>🆕 Latest Questions</h2>
-  <div id="latestQuestions" class="latest-grid"></div>
+  <div id="latestQuestions" class="latest-grid">
+    <div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;">
+      <p>Loading latest questions...</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="search.html" class="hero-btn">See All Questions →</a>
+  </div>
 </section>
 
+<!-- ============ FEATURES SECTION ============ -->
+<section class="features-section container">
+  <h2 style="text-align:center;margin-bottom:50px;font-size:36px;color:#0f7b4d;">✨ Why Choose Us?</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">📚</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Authentic Sources</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Every answer backed by Quran, Hadith & Islamic scholars</p>
+    </div>
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">🖼️</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Visual Evidence</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Book scans, PDFs & images for verification</p>
+    </div>
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">🎥</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Multimedia</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Videos, audio lectures & scholarly content</p>
+    </div>
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">📱</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Mobile Friendly</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Access on any device, anytime, anywhere</p>
+    </div>
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">🌙</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Dark Mode</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Easy on the eyes with night mode support</p>
+    </div>
+    <div style="background:#fff;padding:30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;">
+      <div style="font-size:48px;margin-bottom:15px;">⚡</div>
+      <h3 style="color:#0f7b4d;margin:0 0 10px;">Fast & Offline</h3>
+      <p style="color:#666;margin:0;font-size:14px;">Lightning fast loading with offline support</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container">
-    <p>© 2026 Tahaffuz-E-Iman Library | Made with ❤️ by Aftab Ahmad Raza</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:40px;">
+      <div>
+        <h4 style="color:#0f7b4d;margin-bottom:15px;">📚 Library</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li><a href="index.html" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Home</a></li>
+          <li><a href="categories.html" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Categories</a></li>
+          <li><a href="search.html" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Search</a></li>
+          <li><a href="about.html" style="color:#666;text-decoration:none;display:block;margin:8px 0;">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#0f7b4d;margin-bottom:15px;">🔗 Links</h4>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li><a href="https://github.com/aftabahmadraza" target="_blank" style="color:#666;text-decoration:none;display:block;margin:8px 0;">GitHub</a></li>
+          <li><a href="#" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Twitter</a></li>
+          <li><a href="#" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Facebook</a></li>
+          <li><a href="#" style="color:#666;text-decoration:none;display:block;margin:8px 0;">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#0f7b4d;margin-bottom:15px;">📧 Contact</h4>
+        <p style="color:#666;margin:0;font-size:14px;">
+          Email: info@tahaffuziman.com<br>
+          Support: help@tahaffuziman.com
+        </p>
+      </div>
+    </div>
+    <hr style="border:none;border-top:1px solid #e5e7eb;margin:30px 0;">
+    <div style="text-align:center;">
+      <p style="color:#999;margin:0;font-size:14px;">
+        © 2026 Tahaffuz-E-Iman Library | All Rights Reserved<br>
+        <small>Made with ❤️ by Aftab Ahmad Raza</small>
+      </p>
+    </div>
   </div>
 </footer>
 
+<!-- ============ SCROLL TO TOP BUTTON ============ -->
+<button id="scroll-top-btn" class="fab" style="display:none;">⬆️</button>
+
+<!-- ============ SCRIPTS ============ -->
 <script src="assets/js/search.js"></script>
 <script src="assets/js/latest.js"></script>
 <script src="assets/js/app.js"></script>
+
 </body>
 </html>
